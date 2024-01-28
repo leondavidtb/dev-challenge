@@ -6,10 +6,13 @@ import com.example.challenge1.dtos.UserResponseDTO;
 import com.example.challenge1.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +30,16 @@ public class UserController {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new UserResponseDTO("Internal Server Error"));
+        }
+    }
+
+    @GetMapping(value = "/users")
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+        try {
+            List<UserResponseDTO> users = userService.getAllUsers();
+            return ResponseEntity.ok().body(users);
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null);
         }
     }
 }
