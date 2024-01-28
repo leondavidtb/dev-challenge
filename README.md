@@ -1,6 +1,7 @@
-# Challenge1 Spring Boot Application
+# Challenge Spring Boot Application
 
-This is a simple Spring Boot application that provides an API endpoint for creating contacts. The project was generated using https://start.spring.io/.
+This repository aims to store solutions to some technical challenges in Java using Spring Boot 3. 
+The project was generated using https://start.spring.io/.
 
 ## Dependencies
 
@@ -20,32 +21,9 @@ mvn spring-boot:run
 
 4. The application will start on http://localhost:8080.
 
-## API Endpoint
+## Endpoints
 
-### Create Contact
-
-- **Endpoint**: POST /create_contact
-- **Request Body Format**:
-
-```json
-{
- "name": "John Doe",
- "email": "john.doe@example.com",
- "message": "Hello, I'm interested in your services.",
- "interest": "Product Inquiry"
-}
-``` 
-Response Body Format:
-
-```json
-{
-  "msg": "Thank John Doe, for getting in touch and sharing your interests. We look forward to hearing from you soon."
-}
-```
-
-## Error Handling
-If the request is missing required fields or contains invalid data, a 400 Bad Request response is returned with an error message.
-If an internal server error occurs, a 500 Internal Server Error response is returned with a generic error message.
+### The list of all endpoints is available on http://localhost:8080/swagger-ui/index.html
 
 ## Testing
 Ensure that all dependencies are installed.
@@ -56,3 +34,7 @@ Run the following command:
 mvn test
 ```
 Check the test results for any failures.
+
+<div style="text-align: center;">
+<p>Made with ☕ by Leonardo David 👋🏻 <a href="https://www.linkedin.com/in/leondavidtb/">Get in touch!</a></p>
+</div>
