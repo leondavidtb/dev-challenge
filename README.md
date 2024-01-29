@@ -19,7 +19,7 @@ The project was generated using https://start.spring.io/.
 mvn spring-boot:run
 ```
 
-4. The application will start on http://localhost:8080.
+5. The application will start on http://localhost:8080.
 
 ## Endpoints
 

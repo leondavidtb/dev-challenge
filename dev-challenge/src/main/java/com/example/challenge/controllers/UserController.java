@@ -6,10 +6,7 @@ import com.example.challenge.dtos.UserResponseDTO;
 import com.example.challenge.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -40,6 +37,18 @@ public class UserController {
             return ResponseEntity.ok().body(users);
         } catch (Exception e) {
             return ResponseEntity.status(500).body(null);
+        }
+    }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<UserResponseDTO> editUser(@PathVariable String userId, @RequestBody UserDTO user) {
+        try {
+            UserResponseDTO response = userService.editUser(userId, user);
+            return ResponseEntity.ok().body(response);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(400).body(new UserResponseDTO(e.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(new UserResponseDTO("Internal Server Error"));
         }
     }
 }
